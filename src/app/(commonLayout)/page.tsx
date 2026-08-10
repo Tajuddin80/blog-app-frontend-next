@@ -9,10 +9,12 @@ export default async function Home() {
   const res = await fetch("http://localhost:4000/api/auth/get-session", {
     headers: {
       Cookie: cookieStore.toString(),
-    }
+    },
+    cache: "no-store",
   });
 
-  console.log(await res.json());
+  const session = await res.json()
+  console.log(session);
 
   return (
     <div>
